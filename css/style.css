@@ -1,0 +1,79 @@
+/* Avengeballs styles. Colours that heroes change at runtime are CSS variables (--bolt). */
+:root {
+  --storm: #0f1620;
+  --bolt: #a8ecff;
+  --ink: #e7eef4;
+  --mute: #b8c5d0;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  color-scheme: dark;
+  background: radial-gradient(ellipse at 50% 30%, #1a2736 0%, var(--storm) 70%);
+  color: var(--ink);
+  font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  display: flex; align-items: center; justify-content: center;
+}
+.stage { position: relative; width: min(100vw, 160vh); aspect-ratio: 960 / 600; }
+canvas#c { width: 100%; height: 100%; display: block; background: var(--storm); cursor: crosshair; }
+.overlay {
+  position: absolute; inset: 0; display: flex; overflow: auto;
+  background: rgba(10, 15, 22, 0.93); padding: 12px;
+}
+.overlay.hidden { display: none; }
+.panel {
+  margin: auto; width: 100%; max-width: 820px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
+}
+h1 {
+  margin: 0; font-size: clamp(28px, 5vw, 46px); letter-spacing: 0.03em; color: var(--bolt);
+  text-shadow: 0 0 22px color-mix(in srgb, var(--bolt) 45%, transparent);
+}
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; width: 100%; }
+.card {
+  text-align: left; cursor: pointer; font: inherit; color: var(--ink);
+  background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 6px; padding: 7px 12px; margin: 0;
+}
+.card[aria-pressed="true"] { border-color: var(--bolt); background: rgba(255,255,255,0.1); }
+.card strong { display: block; font-size: 18px; }
+.card span { font-size: 12px; color: var(--mute); line-height: 1.35; display: block; }
+.custom { display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; text-align: left; }
+#preview { width: 104px; height: 104px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.15); background: #1b2633; }
+.opts { display: flex; flex-direction: column; gap: 7px; }
+.row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.row .lab { width: 88px; font-size: 13px; color: var(--mute); }
+.sw { width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent; padding: 0; margin: 0; cursor: pointer; }
+.sw[aria-pressed="true"] { border-color: #fff; box-shadow: 0 0 0 2px rgba(0,0,0,0.5); }
+.gb {
+  font: inherit; font-size: 13px; padding: 4px 10px; margin: 0; cursor: pointer; color: var(--ink);
+  background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15); border-radius: 4px; font-weight: 400;
+}
+.gb[aria-pressed="true"] { border-color: var(--bolt); background: rgba(255,255,255,0.14); }
+.locrow { justify-content: center; }
+.locrow .lab { width: auto; }
+#locDesc { font-size: 12.5px; color: var(--mute); margin-top: -2px; }
+#help { margin: 0; max-width: 70ch; font-size: 12.5px; line-height: 1.5; color: #c5d1db; }
+#help b { color: var(--ink); }
+button#start, button#next, button#storyBtn {
+  font: inherit; font-size: 18px; padding: 8px 30px; margin-top: 2px;
+  background: var(--bolt); color: #07202b; border: 0; border-radius: 3px; cursor: pointer; font-weight: 700;
+}
+button#start:hover, button#next:hover, button#storyBtn:hover { background: #fff; }
+.pausebtn {
+  position: absolute; top: 8px; right: 10px; display: none;
+  font: inherit; font-size: 13px; padding: 4px 10px; margin: 0; cursor: pointer; font-weight: 400;
+  background: rgba(255,255,255,0.08); color: var(--ink); border: 1px solid rgba(255,255,255,0.25); border-radius: 4px;
+}
+.pausebtn:hover { background: rgba(255,255,255,0.18); }
+.step { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; }
+.hiddenstep { display: none; }
+.stepTitle { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); margin-top: 2px; }
+.cards.two { grid-template-columns: repeat(2, 1fr); }
+.card:disabled { opacity: 0.38; cursor: not-allowed; }
+.btnrow { display: flex; gap: 10px; align-items: center; justify-content: center; }
+h2 { margin: 0; font-size: clamp(22px, 3.6vw, 34px); color: var(--ink); }
+#storyText { max-width: 60ch; display: flex; flex-direction: column; gap: 10px; font-size: clamp(14px, 2vw, 18px); line-height: 1.55; color: #d3dde6; text-align: center; margin: 6px 0; }
+#storyText p { margin: 0; opacity: 0; animation: fadein 0.9s forwards; }
+@keyframes fadein { to { opacity: 1; } }
+button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
