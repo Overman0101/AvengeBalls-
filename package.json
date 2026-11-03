@@ -1,0 +1,8 @@
+{
+  "name": "avengeballs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Top-down arena brawler prototype. Open index.html to play; npm test runs the headless test suite.",
+  "scripts": { "test": "node tests/run.js" },
+  "engines": { "node": ">=16" }
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avengeballs</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="stage">
+  <canvas id="c" width="960" height="600"></canvas>
+  <button class="pausebtn" id="pauseBtn">Pause (P)</button>
+  <div class="overlay" id="menu">
+    <div class="panel">
+      <h1>Avengeballs</h1>
+      <div id="stepA" class="step">
+        <div class="stepTitle">Choose your mission</div>
+        <div class="cards two" id="modeCards"></div>
+        <div class="stepTitle">Choose your team</div>
+        <div class="cards two" id="teamCards"></div>
+        <button id="next">Next</button>
+      </div>
+      <div id="stepB" class="step hiddenstep">
+        <div class="stepTitle" id="stepBTitle"></div>
+        <div class="cards" id="heroCards"></div>
+        <div id="arenaRow" class="step">
+          <div class="row locrow"><span class="lab">Arena</span><span id="locs" class="row"></span></div>
+          <div id="locDesc"></div>
+        </div>
+        <div id="teamNote" class="stepTitle" style="text-transform:none;letter-spacing:0"></div>
+        <div class="custom">
+          <canvas id="preview" width="104" height="104"></canvas>
+          <div class="opts">
+            <div class="row"><span class="lab" id="capeLab">Cape</span><span id="capes" class="row"></span></div>
+            <div class="row"><span class="lab">Magic color</span><span id="fxs" class="row"></span></div>
+            <div class="row"><span class="lab">Headgear</span><span id="gears" class="row"></span></div>
+          </div>
+        </div>
+        <p id="help"></p>
+        <div class="btnrow"><button id="back" class="gb">Back</button><button id="start">Start</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="overlay hidden" id="story">
+    <div class="panel">
+      <div id="storyKicker" class="stepTitle"></div>
+      <h2 id="storyTitle"></h2>
+      <div id="storyText"></div>
+      <button id="storyBtn">Continue</button>
+    </div>
+  </div>
+  <div class="overlay hidden" id="perk">
+    <div class="panel">
+      <div class="stepTitle">Chapter cleared</div>
+      <h2>Choose an upgrade</h2>
+      <div id="perkCards" class="cards"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Load order matters: classic scripts share one global scope (no build step, works from file://).
+     core -> modes -> shared -> content (enemies, world, teams, heroes, campaigns) -> ui -> main. -->
+<script src="js/core/config.js"></script>
+<script src="js/core/util.js"></script>
+<script src="js/core/registry.js"></script>
+<script src="js/core/customize.js"></script>
+<script src="js/core/audio.js"></script>
+<script src="js/core/world.js"></script>
+<script src="js/core/state.js"></script>
+<script src="js/core/combat.js"></script>
+<script src="js/core/input.js"></script>
+<script src="js/core/character.js"></script>
+<script src="js/core/draw.js"></script>
+<script src="js/core/hud.js"></script>
+<script src="js/core/update.js"></script>
+<script src="js/modes/modes.js"></script>
+<script src="js/modes/endless.js"></script>
+<script src="js/modes/campaign.js"></script>
+<script src="js/modes/team.js"></script>
+<script src="js/modes/cutscene.js"></script>
+<script src="js/shared/movement.js"></script>
+<script src="js/shared/projectiles.js"></script>
+<script src="js/shared/effects.js"></script>
+<script src="js/shared/melee.js"></script>
+<script src="js/enemies/behaviours.js"></script>
+<script src="js/enemies/basic.js"></script>
+<script src="js/enemies/chitauri.js"></script>
+<script src="js/world/arenas.js"></script>
+<script src="js/teams/avengers.js"></script>
+<script src="js/teams/xmen.js"></script>
+<script src="js/teams/villains.js"></script>
+<script src="js/heroes/thor.js"></script>
+<script src="js/heroes/cap.js"></script>
+<script src="js/heroes/iron.js"></script>
+<script src="js/heroes/hawkeye.js"></script>
+<script src="js/heroes/widow.js"></script>
+<script src="js/heroes/hulk.js"></script>
+<script src="js/heroes/spider.js"></script>
+<script src="js/heroes/loki.js"></script>
+<script src="js/heroes/strange.js"></script>
+<script src="js/heroes/scarlet.js"></script>
+<script src="js/heroes/ultron.js"></script>
+<script src="js/heroes/vision.js"></script>
+<script src="js/heroes/wolverine.js"></script>
+<script src="js/heroes/deadpool.js"></script>
+<script src="js/heroes/quicksilver.js"></script>
+<script src="js/campaigns/newyork-stages.js"></script>
+<script src="js/campaigns/newyork-scenes.js"></script>
+<script src="js/campaigns/newyork.js"></script>
+<script src="js/ui/menu.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
